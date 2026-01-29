@@ -1,0 +1,29 @@
+.shfb-bar {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    padding: 12px 40px 12px 15px;
+    z-index: 9999;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.shfb-header {
+    top: 0;
+}
+
+.shfb-footer {
+    bottom: 0;
+}
+
+.shfb-close {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    font-size: 22px;
+    cursor: pointer;
+    color: inherit;
+}

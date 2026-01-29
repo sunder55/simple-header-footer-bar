@@ -27,7 +27,7 @@
    * Includes required files.
    */
   require_once SHFB_PATH . 'includes/class-shfb-settings.php';
-
+  require_once SHFB_PATH . 'includes/class-shfb-frontend.php';
 
   /**
    * Initialize the plugin.
@@ -35,5 +35,6 @@
   function shfb_init()
   {
     $shfb_settings = new SHFB_Settings();
+    $shfb_frontend = new SHFB_Frontend();
   }
   add_action('plugins_loaded', 'shfb_init');
