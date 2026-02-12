@@ -29,6 +29,7 @@ class SHFB_Settings
         add_action('admin_init', [$this, 'register_settings']);
         // enqueue scripts
         add_action('admin_enqueue_scripts', [$this, 'enqueue_scripts']);
+        
     }
 
     /**
@@ -44,6 +45,7 @@ class SHFB_Settings
         wp_enqueue_script('shfb-admin-js', SHFB_URL . 'assets/js/admin.js', ['wp-color-picker', 'jquery'], time(), true);
 
         wp_enqueue_style('shfb-admin-style', SHFB_URL . 'assets/css/admin.css', [], time());
+        
     }
 
     /**
@@ -78,6 +80,7 @@ class SHFB_Settings
             'bg_color'     => __('Background Color', 'simple-header-footer-bar'),
             'font_color'   => __('Font Color', 'simple-header-footer-bar'),
             'position'     => __('Position', 'simple-header-footer-bar'),
+            'display_mode' => __('Display Mode', 'simple-header-footer-bar'),
             'close_button' => __('Show Close Button', 'simple-header-footer-bar'),
         ];
 
@@ -86,6 +89,7 @@ class SHFB_Settings
                 'text'         => [$this, 'text_field'],
                 'bg_color', 'font_color' => [$this, 'color_field'],
                 'position'     => [$this, 'position_field'],
+                'display_mode' => [ $this, 'display_mode_field' ],
                 'close_button' => [$this, 'checkbox_field'],
             };
 
@@ -111,6 +115,7 @@ class SHFB_Settings
         $output['bg_color']     = isset($input['bg_color']) ? sanitize_hex_color($input['bg_color']) : '#000000';
         $output['font_color']   = isset($input['font_color']) ? sanitize_hex_color($input['font_color']) : '#ffffff';
         $output['position']     = in_array($input['position'] ?? '', ['header', 'footer'], true) ? $input['position'] : 'header';
+        $output['display_mode'] = in_array($input['display_mode'] ?? 'always',['always', 'once'],true) ? $input['display_mode'] : 'always';
         $output['close_button'] = ! empty($input['close_button']) ? 1 : 0;
 
         return $output;
@@ -191,4 +196,31 @@ class SHFB_Settings
             $checked
         );
     }
+
+    /**
+     * Summary of display_mode_field
+     * @return void
+     */
+    public function display_mode_field() {
+
+    $options = get_option( 'shfb_options', [] );
+    $value   = $options['display_mode'] ?? 'always';
+    ?>
+
+    <select name="shfb_options[display_mode]">
+        <option value="always" <?php selected( $value, 'always' ); ?>>
+            Always show
+        </option>
+        <option value="once" <?php selected( $value, 'once' ); ?>>
+            Show once per visitor
+        </option>
+    </select>
+
+    <p class="description">
+        Choose whether the bar should always be visible or only shown once per visitor.
+    </p>
+
+    <?php
+}
+
 }

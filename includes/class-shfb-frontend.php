@@ -34,6 +34,16 @@ class SHFB_Frontend
             SHFB_VERSION,
             true
         );
+        $options = get_option( 'shfb_options', [] );
+
+        wp_localize_script(
+            'shfb-frontend',
+            'SHFB_DATA',
+            [
+                'displayMode' => $options['display_mode'] ?? 'always',
+            ]
+        );
+
     }
 
     public function render_bar()
