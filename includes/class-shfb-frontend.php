@@ -34,7 +34,7 @@ class SHFB_Frontend
             SHFB_VERSION,
             true
         );
-        $options = get_option( 'shfb_options', [] );
+        $options = get_option('shfb_options', []);
 
         wp_localize_script(
             'shfb-frontend',
@@ -43,14 +43,29 @@ class SHFB_Frontend
                 'displayMode' => $options['display_mode'] ?? 'always',
             ]
         );
-
     }
 
     public function render_bar()
     {
-        $options = get_option('shfb_options', []);
 
-        if (empty($options['text'])) {
+        $options = get_option('shfb_options', []);
+        $message = $options['text'] ?? '';
+
+        // for single pages
+        if (is_singular()) {
+
+            $disabled = get_post_meta(get_the_ID(), '_shfb_disable', true);
+            if ($disabled) {
+                return;
+            }
+
+            $custom_text = get_post_meta(get_the_ID(), '_shfb_custom_text', true);
+            if (! empty($custom_text)) {
+                $message = $custom_text;
+            }
+        }
+
+        if (empty($message)) {
             return;
         }
         $bg   = $options['bg_color'] ?? '#000';
@@ -65,7 +80,7 @@ class SHFB_Frontend
             style="background:<?php echo esc_attr($bg); ?>; color:<?php echo esc_attr($font); ?>">
 
             <span class="shfb-text">
-                <?php echo wp_kses_post($options['text']); ?>
+                <?php echo wp_kses_post($message); ?>
             </span>
 
             <?php if ($close) : ?>

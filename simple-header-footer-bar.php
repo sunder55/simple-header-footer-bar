@@ -2,7 +2,7 @@
   /**
    * Plugin Name: Simple Header Footer Bar
    * Plugin URI: https://github.com/sunder55/simple-header-footer-bar
-   * Description: A simple plugin to add header and footer bar to your website.
+   * Description: Display a customizable header or footer bar with per-page visibility control.
    * Version: 1.0.0
    * Author: Rukmagat Kandel
    * License: GPL-2.0+
@@ -28,6 +28,7 @@
    */
   require_once SHFB_PATH . 'includes/class-shfb-settings.php';
   require_once SHFB_PATH . 'includes/class-shfb-frontend.php';
+  require_once SHFB_PATH . 'includes/class-shfb-metabox.php';
 
   /**
    * Initialize the plugin.
@@ -36,5 +37,6 @@
   {
     $shfb_settings = new SHFB_Settings();
     $shfb_frontend = new SHFB_Frontend();
+    $shfb_metabox = new SHFB_Metabox();
   }
   add_action('plugins_loaded', 'shfb_init');
