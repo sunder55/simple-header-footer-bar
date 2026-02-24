@@ -66,7 +66,10 @@ class SHFB_Metabox
         // Nonce check
         if (
             ! isset($_POST['shfb_meta_nonce']) ||
-            ! wp_verify_nonce($_POST['shfb_meta_nonce'], 'shfb_meta_nonce_action')
+            ! wp_verify_nonce(
+                sanitize_text_field(wp_unslash($_POST['shfb_meta_nonce'])),
+                'shfb_meta_nonce_action'
+            )
         ) {
             return;
         }
@@ -89,7 +92,9 @@ class SHFB_Metabox
         }
 
         if (isset($_POST['shfb_custom_text'])) {
-            $sanitized = wp_kses_post($_POST['shfb_custom_text']);
+            $sanitized = wp_kses_post(
+                wp_unslash($_POST['shfb_custom_text'])
+            );
             update_post_meta($post_id, '_shfb_custom_text', $sanitized);
         }
     }

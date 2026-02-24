@@ -6,6 +6,9 @@ jQuery(document).ready(function ($) {
     if (localStorage.getItem("shfb_bar_closed") === "yes") {
       bar.remove();
       return;
+    } else {
+      // Show the bar for first-time visitors
+      bar.addClass("shfb-visible");
     }
 
     $(".shfb-close").on("click", function () {
@@ -13,6 +16,9 @@ jQuery(document).ready(function ($) {
       bar.fadeOut();
     });
   } else {
+    // Always show the bar
+    bar.addClass("shfb-visible");
+
     $(".shfb-close").on("click", function () {
       bar.fadeOut();
     });

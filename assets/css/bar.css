@@ -11,6 +11,14 @@
     justify-content: center;
     align-items: center;
     animation: shfb-slide-down 0.4s ease-out;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.shfb-bar.shfb-visible {
+    opacity: 1;
+    visibility: visible;
 }
 
 .shfb-header {

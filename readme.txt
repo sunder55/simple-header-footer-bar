@@ -1,5 +1,5 @@
 === Simple Header Footer Bar ===
-Contributors: yourusername
+Contributors: sunder56
 Tags: header bar, footer bar, notification bar, announcement
 Requires at least: 6.0
 Tested up to: 6.9
@@ -7,6 +7,8 @@ Requires PHP: 8.0
 Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
+
+A customizable header or footer notification bar with per-page visibility and display control.
 
 == Description ==
 Add a lightweight and customizable header or footer notification bar with per-page visibility, custom messages, and display behavior control.
