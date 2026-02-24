@@ -5,7 +5,7 @@
    * Description: Display a customizable header or footer bar with per-page visibility control.
    * Version: 1.0.0
    * Author: Rukmagat Kandel
-   * License: GPL-2.0+
+   * License: GPL v2 or later
    * License URI: https://www.gnu.org/licenses/gpl-2.0.txt
    * Text Domain: simple-header-footer-bar
    */

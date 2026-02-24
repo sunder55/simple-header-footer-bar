@@ -78,14 +78,15 @@ class SHFB_Frontend
 ?>
         <div class="shfb-bar <?php echo esc_attr($position_class); ?>"
             style="background:<?php echo esc_attr($bg); ?>; color:<?php echo esc_attr($font); ?>">
+            <div class="shfb-inner">
+                <span class="shfb-text">
+                    <?php echo wp_kses_post($message); ?>
+                </span>
 
-            <span class="shfb-text">
-                <?php echo wp_kses_post($message); ?>
-            </span>
-
-            <?php if ($close) : ?>
-                <button class="shfb-close">&times;</button>
-            <?php endif; ?>
+                <?php if ($close) : ?>
+                    <button class="shfb-close">&times;</button>
+                <?php endif; ?>
+            </div>
         </div>
 <?php
 

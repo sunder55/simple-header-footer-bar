@@ -1,2 +1,6 @@
-<?php 
-if(!defined("ABSPATH")) die();
+<?php
+if (! defined('WP_UNINSTALL_PLUGIN')) {
+    exit;
+}
+
+delete_option('shfb_options');
