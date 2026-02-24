@@ -19,6 +19,11 @@ Add a lightweight and customizable header or footer notification bar with per-pa
 * Disable per post/page
 * Custom message per post/page
 
+== Screenshots ==
+1. Plugin settings page.
+2. Header bar displayed on the frontend.
+3. Per-page visibility settings in post editor.
+
 == Installation ==
 1. Upload plugin folder to /wp-content/plugins/
 2. Activate plugin
